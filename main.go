@@ -10,13 +10,14 @@ func main() {
 	// maxItemsInGroup := 10
 
 	var taskItems = []string{taskOne, watchCourse, rewardDesert}
+	maxItems := 10
 
 	fmt.Println("List of Todos")
 
-	for index, task := range taskItems {
-		// fmt.Println(index+1, ".", task)
-		fmt.Printf("%d: %s\n", index+1, task)
-	}
+	// for index, task := range taskItems {
+	// 	// fmt.Println(index+1, ".", task)
+	// 	fmt.Printf("%d: %s\n", index+1, task)
+	// }
 
 	/*fmt.Println(taskOne)
 	fmt.Printf("%v %T \n", watchCourse, watchCourse)
@@ -35,4 +36,12 @@ func main() {
 	fmt.Println("My Project") */
 	// fmt.Println("Tasks:", taskItems)
 
+	printTask(taskItems, maxItems)
+}
+
+func printTask(items []string, itemsLimit int) {
+	for index, task := range items {
+		// fmt.Println(index+1, ".", task)
+		fmt.Printf("%d: %s\n", index+1, task)
+	}
 }
