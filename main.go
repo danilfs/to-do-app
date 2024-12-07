@@ -10,7 +10,7 @@ func main() {
 
 	fmt.Println("List of Todos")
 	fmt.Println(taskOne)
-	fmt.Println(watchCourse)
+	fmt.Printf("%v %T \n", watchCourse, watchCourse)
 	fmt.Println("Watch video")
 	fmt.Println(rewardDesert)
 
