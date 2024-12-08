@@ -2,9 +2,21 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 )
 
+var taskOne string = "Watch go crush course"
+var watchCourse string = "Watch course"
+var rewardDesert string = "Eat cheesecake"
+
+var taskItems = []string{taskOne, watchCourse, rewardDesert}
+
 func main() {
+
+	http.HandleFunc("/", helloUser)
+	http.HandleFunc("/show-tasks", showTasks)
+
+	http.ListenAndServe(":8080", nil)
 
 	/*var taskOne string = "Watch go crush course"
 	watchCourse := "Watch course"
@@ -48,7 +60,18 @@ func main() {
 	printTask(taskItems)*/
 }
 
-func printTask(items []string) {
+func showTasks(writer http.ResponseWriter, request *http.Request) {
+	for index, tasks := range taskItems {
+		fmt.Fprintln(writer, index+1, tasks)
+	}
+}
+
+func helloUser(writer http.ResponseWriter, request *http.Request) {
+	var greeting = "Hello user.Welcome to our ToDolist App"
+	fmt.Fprintln(writer, greeting)
+}
+
+/*func printTask(items []string) {
 	for index, task := range items {
 		// fmt.Println(index+1, ".", task)
 		fmt.Printf("%d: %s\n", index+1, task)
@@ -59,6 +82,6 @@ func addTask(taskItems []string, newTask string) []string {
 	var updatedTaskItems = append(taskItems, newTask)
 	/*for index, tasks := range updatedTaskItems {
 		fmt.Printf("%d: %s \n", index+1, tasks)
-	}*/
+	}
 	return updatedTaskItems
-}
+}*/
